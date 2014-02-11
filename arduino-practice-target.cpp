@@ -13,12 +13,13 @@
 #include "Target.h"
 
 const int lenTargets = 5;
-const float visibleTime = 2;
-const float idleTime = 0.25;
+const float visibleTime = 2000;
+const float idleTime = 250;
 
-void wait (float seconds)
+// TODO: Remove this method in the Arduino environment
+void delay (int milliseconds)
 {
-	clock_t endTime = clock() + seconds * CLOCKS_PER_SEC;
+	clock_t endTime = clock() + milliseconds / 1000  * CLOCKS_PER_SEC;
 	while (clock() < endTime) {}
 }
 
@@ -39,11 +40,11 @@ int main(int argc, _TCHAR* argv[])
 	{
 		if (currentTarget) {
 			currentTarget->hide();
-			wait(idleTime);
+			delay(idleTime);
 		}
 		currentTarget = targets[rand() % lenTargets];
 		currentTarget->show();
-		wait(visibleTime);
+		delay(visibleTime);
 	}
 
 	delete *targets;
