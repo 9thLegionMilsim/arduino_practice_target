@@ -11,3 +11,21 @@
 *.lai
 *.la
 *.a
+
+# Visual Studio Files
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.suo
+*.sdf
+*.opensdf
+*.lastbuildstate
+
+# Others
+*.log
+*.tlog
+Debug/*
+Release/*
+!Debug/*.exe
+!Release/*.exe
