@@ -1,3 +1,7 @@
+/*
+ * Author: Laurent Goderre
+ */
+
 #include <stdio.h>
 #include "Target.h"
 
