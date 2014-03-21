@@ -18,3 +18,5 @@ void Target::hide()
 {
 	printf("Hiding target #%d\n", number);
 }
+
+
