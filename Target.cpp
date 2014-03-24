@@ -3,7 +3,8 @@
  */
 
 #include <stdio.h>
-#include "Arduino.h"
+#include <Arduino.h>
+#include <Adafruit_PWMServoDriver.h>
 #include "Target.h"
 
 Target::Target(int targetNumber) : number(targetNumber){}
