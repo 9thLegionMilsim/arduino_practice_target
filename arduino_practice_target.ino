@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tchar.h>
-#include <Time.h> //http://playground.arduino.cc/uploads/Code/Time.zip
+#include <Time.h>
 
 #include "Target.h"
 
