@@ -13,15 +13,11 @@ const int lenTargets = 16;
 const float visibleTime = 2000;
 const float idleTime = 250;
 
-void setup(){
-  Serial.begin(9600);
-}
+Target * targets[lenTargets];
+Target * currentTarget = NULL;
 
-void loop()
-{
-	Target * currentTarget = NULL;
-	Target * targets[lenTargets];
-	int t;
+void setup(){
+	Serial.begin(9600);
 
 	for(int i=0; i<lenTargets; i++)
 	{
@@ -29,7 +25,10 @@ void loop()
 	}
 
 	srand (now());
+}
 
+void loop()
+{
 	while (true) 
 	{
 		if (currentTarget) {
@@ -45,7 +44,3 @@ void loop()
 
 	return;
 }
-
-
-
-
