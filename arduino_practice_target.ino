@@ -9,7 +9,7 @@
 
 #include "Target.h"
 
-const int lenTargets = 5;
+const int lenTargets = 16;
 const float visibleTime = 2000;
 const float idleTime = 250;
 
