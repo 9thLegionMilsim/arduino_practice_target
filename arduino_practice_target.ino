@@ -1,3 +1,7 @@
+/*
+ * Author: Laurent Goderre
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <tchar.h>
@@ -10,7 +14,7 @@ const float visibleTime = 2000;
 const float idleTime = 250;
 
 void setup(){
-  
+  Serial.begin(9600);
 }
 
 void loop()
