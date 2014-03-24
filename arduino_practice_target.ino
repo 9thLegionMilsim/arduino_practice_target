@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <tchar.h>
 #include <Time.h>
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 
 #include "Target.h"
 
@@ -19,9 +21,13 @@ Target * currentTarget = NULL;
 void setup(){
 	Serial.begin(9600);
 
+	Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
+	pwm.begin();
+	pwm.setPWMFreq(60);
+
 	for(int i=0; i<lenTargets; i++)
 	{
-		targets[i] = new Target(i);
+		targets[i] = new Target(i, pwm);
 	}
 
 	srand (now());
