@@ -1,3 +1,7 @@
+/*
+ * Author: Laurent Goderre
+ */
+
 #pragma once
 class Target
 {
@@ -11,6 +15,3 @@ public:
 	void show(void);
 	void hide();
 };
-
-
-
