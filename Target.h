@@ -2,9 +2,10 @@
 class Target
 {
 	int number;
+	int servoNumber;
 	Adafruit_PWMServoDriver pwm;
 public:
-	Target(int targetNumber, Adafruit_PWMServoDriver pwm);
+	Target(int targetNumber, Adafruit_PWMServoDriver pwm, int servoNumber);
 	~Target(void);
 	
 	void show(void);

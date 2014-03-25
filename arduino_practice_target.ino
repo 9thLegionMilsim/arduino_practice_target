@@ -12,6 +12,7 @@
 #include "Target.h"
 
 #define SERVOFREQUENCY	60
+#define SERVOPERBOARD	16
 
 const int lenTargets = 16;
 const float visibleTime = 2000;
@@ -23,13 +24,20 @@ Target * currentTarget = NULL;
 void setup(){
 	Serial.begin(9600);
 
-	Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
-	pwm.begin();
-	pwm.setPWMFreq(SERVOFREQUENCY);
+	Adafruit_PWMServoDriver pwm = NULL;
+	uint8_t boardAddr = 0x40;
+	uint8_t servoNum= 0;
 
 	for(int i=0; i<lenTargets; i++)
 	{
-		targets[i] = new Target(i, pwm);
+		if (i % SERVOPERBOARD == 1) {
+			pwm = Adafruit_PWMServoDriver(boardAddr++);
+			pwm.begin();
+			pwm.setPWMFreq(SERVOFREQUENCY);
+			servoNum = 0;
+		}
+
+		targets[i] = new Target(i, pwm, servoNum);
 	}
 
 	srand (now());

@@ -7,7 +7,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include "Target.h"
 
-Target::Target(int targetNumber, Adafruit_PWMServoDriver pwm) : number(targetNumber), pwm(pwm) {}
+Target::Target(int targetNumber, Adafruit_PWMServoDriver pwm, int servoNumber) : number(targetNumber), pwm(pwm), servoNumber(servoNumber) {}
 
 Target::~Target(void){}
 
