@@ -13,12 +13,12 @@ Target::~Target(void){}
 
 void Target::show()
 {
-	Serial.println("Showing target #" + number);
+	Serial.println("Showing target #" + (number + 1));
 }
 
 void Target::hide()
 {
-	Serial.println("Hiding target #" + number);
+	Serial.println("Hiding target #" + (number + 1));
 }
 
 
