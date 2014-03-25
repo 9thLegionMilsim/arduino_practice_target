@@ -11,6 +11,8 @@
 
 #include "Target.h"
 
+#define SERVOFREQUENCY	60
+
 const int lenTargets = 16;
 const float visibleTime = 2000;
 const float idleTime = 250;
@@ -23,7 +25,7 @@ void setup(){
 
 	Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 	pwm.begin();
-	pwm.setPWMFreq(60);
+	pwm.setPWMFreq(SERVOFREQUENCY);
 
 	for(int i=0; i<lenTargets; i++)
 	{
