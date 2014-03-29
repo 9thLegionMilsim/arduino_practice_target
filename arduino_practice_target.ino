@@ -30,11 +30,12 @@ void setup(){
 
 	for(int i=0; i<lenTargets; i++)
 	{
-		if (i % SERVOPERBOARD == 1) {
+		servoNum = i % SERVOPERBOARD
+
+		if (servoNum == 0) {
 			pwm = Adafruit_PWMServoDriver(boardAddr++);
 			pwm.begin();
 			pwm.setPWMFreq(SERVOFREQUENCY);
-			servoNum = 0;
 		}
 
 		targets[i] = new Target(i, pwm, servoNum);
