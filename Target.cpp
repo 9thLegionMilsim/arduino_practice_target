@@ -13,18 +13,21 @@ const int servoOnPosition = 150;
 const int servoOffPosition = 600;
 //-------------------------------------
 
-Target::Target(int targetNumber, Adafruit_PWMServoDriver pwm, int servoNumber) : number(targetNumber), pwm(pwm), servoNumber(servoNumber) {}
+Target::Target(int targetNumber, Adafruit_PWMServoDriver pwm, int servoNumber) : number(targetNumber), pwm(pwm), servoNumber(servoNumber) {
+	showingStr = "Showing target #";
+	hidingStr = "Hiding target #";
+}
 
 Target::~Target(void){}
 
 void Target::show()
 {
-	Serial.println("Showing target #" + (number + 1));
+	Serial.println(showingStr + (number + 1));
 	pwm.setPWM(servoNumber, 0, servoOnPosition);
 }
 
 void Target::hide()
 {
-	Serial.println("Hiding target #" + (number + 1));
+	Serial.println(hidingStr + (number + 1));
 	pwm.setPWM(servoNumber, 0, servoOffPosition);
 }
