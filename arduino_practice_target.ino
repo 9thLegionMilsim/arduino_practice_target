@@ -30,7 +30,7 @@ void setup(){
 
 	for(int i=0; i<lenTargets; i++)
 	{
-		servoNum = i % SERVOPERBOARD
+		servoNum = i % SERVOPERBOARD;
 
 		if (servoNum == 0) {
 			pwm = Adafruit_PWMServoDriver(boardAddr++);
