@@ -4,22 +4,23 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <tchar.h>
 #include <Time.h>
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
 
 #include "Target.h"
+#include "Lane.h"
 
 #define SERVOFREQUENCY	60
 #define SERVOPERBOARD	16
 
-const int lenTargets = 16;
+const int lenLanes = 5;
+const int targetsPerLane = 3;
 const float visibleTime = 2000;
 const float idleTime = 250;
 
-Target * targets[lenTargets];
-Target * currentTarget = NULL;
+Lane * lanes[lenLanes];
+bool started = false;
 
 void setup(){
 	Serial.begin(9600);
@@ -28,17 +29,23 @@ void setup(){
 	uint8_t boardAddr = 0x40;
 	uint8_t servoNum= 0;
 
-	for(int i=0; i<lenTargets; i++)
+	for(int l=0; l<lenLanes; l++)
 	{
-		servoNum = i % SERVOPERBOARD;
+		Target* targets[targetsPerLane];
 
-		if (servoNum == 0) {
-			pwm = Adafruit_PWMServoDriver(boardAddr++);
-			pwm.begin();
-			pwm.setPWMFreq(SERVOFREQUENCY);
+		for (int t=0; t<targetsPerLane; t++){
+			servoNum = l * t % SERVOPERBOARD;
+
+			if (servoNum == 0) {
+				pwm = Adafruit_PWMServoDriver(boardAddr++);
+				pwm.begin();
+				pwm.setPWMFreq(SERVOFREQUENCY);
+			}
+
+			targets[t] = new Target(t, pwm, servoNum);
 		}
 
-		targets[i] = new Target(i, pwm, servoNum);
+		lanes[l] = new Lane (l, targetsPerLane, targets);
 	}
 
 	srand (now());
@@ -48,16 +55,19 @@ void loop()
 {
 	while (true) 
 	{
-		if (currentTarget) {
-			currentTarget->hide();
+		if (started) {
+			for (int l=0; l<lenLanes; l++) {
+				lanes[l]->hideCurrentTarget();
+			}
 			delay(idleTime);
+		} else{
+			started = true;
 		}
-		currentTarget = targets[rand() % lenTargets];
-		currentTarget->show();
+		for (int l=0; l<lenLanes; l++) {
+			lanes[l]->showTarget();
+		}
 		delay(visibleTime);
 	}
 
-	delete *targets;
-
-	return;
+	delete *lanes;
 }

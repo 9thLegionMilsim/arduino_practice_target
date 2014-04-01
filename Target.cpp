@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <Arduino.h>
-#include <Adafruit_PWMServoDriver.h>
 #include "Target.h"
 
 //-------------------------------------
@@ -13,9 +12,11 @@ const int servoOnPosition = 150;
 const int servoOffPosition = 600;
 //-------------------------------------
 
+const String showingStr = "Showing target #";
+const String hidingStr = "Hiding target #";
+
 Target::Target(int targetNumber, Adafruit_PWMServoDriver pwm, int servoNumber) : number(targetNumber), pwm(pwm), servoNumber(servoNumber) {
-	showingStr = "Showing target #";
-	hidingStr = "Hiding target #";
+
 }
 
 Target::~Target(void){}
