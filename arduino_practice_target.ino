@@ -19,7 +19,7 @@ const int targetsPerLane = 3;
 const float visibleTime = 2000;
 const float idleTime = 250;
 
-Lane * lanes[lenLanes];
+Lane* lanes[lenLanes];
 bool started = false;
 
 void setup(){
