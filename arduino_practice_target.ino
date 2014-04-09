@@ -11,8 +11,9 @@
 #include "Target.h"
 #include "Lane.h"
 
-#define SERVOFREQUENCY	60
+#define SERVOFREQUENCY	1600
 #define SERVOPERBOARD	16
+#define TWBITRATE	12;
 
 const int lenLanes = 5;
 const int targetsPerLane = 3;
@@ -40,6 +41,7 @@ void setup(){
 				pwm = Adafruit_PWMServoDriver(boardAddr++);
 				pwm.begin();
 				pwm.setPWMFreq(SERVOFREQUENCY);
+				TWBR = TWBITRATE;
 			}
 
 			targets[t] = new Target(t, pwm, servoNum);
