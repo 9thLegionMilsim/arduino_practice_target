@@ -9,7 +9,7 @@
 //-------------------------------------
 // TODO: CALIBRATE THESE FOR SERVOS
 const int servoOnPosition = 150;
-const int servoOffPosition = 600;
+const int servoOffPosition = 400;
 //-------------------------------------
 
 const String showingStr = "Showing target #";
