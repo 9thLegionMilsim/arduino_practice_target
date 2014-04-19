@@ -35,7 +35,7 @@ void setup(){
 		Target* targets[targetsPerLane];
 
 		for (int t=0; t<targetsPerLane; t++){
-			servoNum = l * t % SERVOPERBOARD;
+			servoNum = (l * targetsPerLane + t) % SERVOPERBOARD;
 
 			if (servoNum == 0) {
 				pwm = Adafruit_PWMServoDriver(boardAddr++);
