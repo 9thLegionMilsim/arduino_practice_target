@@ -29,10 +29,11 @@ void setup(){
 	Adafruit_PWMServoDriver pwm = NULL;
 	uint8_t boardAddr = 0x40;
 	uint8_t servoNum= 0;
+	Target** targets;
 
 	for(int l=0; l<lenLanes; l++)
 	{
-		Target* targets[targetsPerLane];
+		targets = new Target* [targetsPerLane];
 
 		for (int t=0; t<targetsPerLane; t++){
 			servoNum = (l * targetsPerLane + t) % SERVOPERBOARD;
@@ -44,7 +45,7 @@ void setup(){
 				TWBR = TWBITRATE;
 			}
 
-			targets[t] = new Target(t, pwm, servoNum);
+			targets[t] = new Target(t, pwm, servoNum);;
 		}
 
 		lanes[l] = new Lane (l, targetsPerLane, targets);

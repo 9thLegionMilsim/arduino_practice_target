@@ -16,7 +16,6 @@ const String showingStr = "Showing target #";
 const String hidingStr = "Hiding target #";
 
 Target::Target(int targetNumber, Adafruit_PWMServoDriver pwm, int servoNumber) : number(targetNumber), pwm(pwm), servoNumber(servoNumber) {
-
 }
 
 Target::~Target(void){}
