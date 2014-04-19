@@ -6,6 +6,7 @@
 #include "Lane.h"
 
 const String laneStr = "Lane #";
+const String laneStrEnd =  ": ";
 
 Lane::Lane(int laneNumber, int lenTargets, Target* targets[]): number(laneNumber), lenTargets(lenTargets), targets(targets) {
 }
@@ -13,12 +14,13 @@ Lane::Lane(int laneNumber, int lenTargets, Target* targets[]): number(laneNumber
 Lane::~Lane(void){}
 
 void Lane::showTarget() {
-	Serial.println(laneStr + (number + 1));
+	Serial.print(laneStr + (number + 1) + laneStrEnd);
 	currentTarget = targets[rand() % lenTargets];
 	currentTarget->show();
 }
 
 void Lane::hideCurrentTarget(){
-	Serial.println(laneStr + (number + 1));
+	Serial.print(laneStr + (number + 1) + laneStrEnd);
 	currentTarget->hide();
 }
+
