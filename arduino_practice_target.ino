@@ -56,6 +56,7 @@ void setup(){
 
 void loop()
 {
+	delay(1000);
 	while (true) 
 	{
 		if (started) {
