@@ -17,8 +17,9 @@
 
 const int lenLanes = 6;
 const int targetsPerLane = 3;
-const float visibleTime = 5000;
-const float idleTime = 500;
+const int visibleTime = 5000;
+const int idleTimeMin = 3000;
+const int idleTimeMax = 5000;
 
 Lane* lanes[lenLanes];
 bool started = false;
@@ -65,7 +66,7 @@ void loop()
 			for (int l=0; l<lenLanes; l++) {
 				lanes[l]->hideCurrentTarget();
 			}
-			delay(idleTime);
+			delay(rand() % (idleTimeMax - idleTimeMin) + idleTimeMin);
 		} else{
 			started = true;
 		}
