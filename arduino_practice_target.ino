@@ -15,7 +15,7 @@
 #define SERVOPERBOARD	16
 #define TWBITRATE	12;
 
-const int lenLanes = 5;
+const int lenLanes = 6;
 const int targetsPerLane = 3;
 const float visibleTime = 2000;
 const float idleTime = 250;
