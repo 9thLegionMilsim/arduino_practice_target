@@ -17,8 +17,8 @@
 
 const int lenLanes = 6;
 const int targetsPerLane = 3;
-const float visibleTime = 2000;
-const float idleTime = 250;
+const float visibleTime = 5000;
+const float idleTime = 500;
 
 Lane* lanes[lenLanes];
 bool started = false;
@@ -52,6 +52,9 @@ void setup(){
 	}
 
 	srand (now());
+
+	//Allow time for the targets to reset to original position
+	delay(1000);
 }
 
 void loop()
