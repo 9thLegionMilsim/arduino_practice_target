@@ -19,3 +19,4 @@ public:
 	void showTarget(void);
 	void hideCurrentTarget(void);
 };
+

@@ -32,3 +32,4 @@ void Target::hide()
 	Serial.println(hidingStr + (number + 1));
 	pwm.setPWM(servoNumber, 0, servoOffPosition);
 }
+
