@@ -11,7 +11,7 @@
 #include "Target.h"
 #include "Lane.h"
 
-#define SERVOFREQUENCY	1600
+#define SERVOFREQUENCY	60
 #define SERVOPERBOARD	16
 #define TWBITRATE	12;
 
