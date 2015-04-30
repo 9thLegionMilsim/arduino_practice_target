@@ -11,7 +11,11 @@ const String laneStrEnd =  ": ";
 Lane::Lane(int laneNumber, int lenTargets, Target* targets[]): number(laneNumber), lenTargets(lenTargets), targets(targets) {
 }
 
-Lane::~Lane(void){}
+Lane::~Lane(void){
+	for(int t=0;t<lenTargets;t++) {
+		delete targets[t];
+	}
+}
 
 void Lane::showTarget() {
 	Serial.print(laneStr + (number + 1) + laneStrEnd);
